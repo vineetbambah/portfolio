@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Photo from "@/app/photo.jpg";
+import Work from "./work";
 export default function Home() {
   return (
-    <div className="w-4/6 m-auto">
+    <div className="w-4/6 m-auto select-none">
     <nav className="flex flex-row justify-between items-center py-4">
         <h1 className="text-2xl">vineet bambah</h1>
         <div className="flex space-x-2 text-gray-700 ">
@@ -21,12 +22,7 @@ export default function Home() {
       </div>
     </main>
     <section className="work mt-24 m-auto max-w-3/4">
-      <h1 className="font-thin text-3xl">Work</h1>
-      <div className="flex flex-row  space-x-8 items-center mt-4">
-        <h1 className="">Projects</h1>
-        <h1 className="">Writings</h1>
-        <h1 className="">Questions</h1>
-      </div>
+      <Work/>
     </section>
     </div>
   );
