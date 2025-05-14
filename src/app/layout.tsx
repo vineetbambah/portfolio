@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css";
-import { Courier_Prime} from "next/font/google";
-const courierPrime = Courier_Prime({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-courier-prime",
-});
 export const metadata: Metadata = {
   title: "Vineet Bambah",
   description: "Software Engineer | Open Source Contributor | Tech Enthusiast",
@@ -17,11 +12,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en"
+    suppressHydrationWarning>
       <body
-        className={`font-mono antialiased`}
+        className={`font-mono antialiased text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-900`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,29 +1,54 @@
 import Image from "next/image";
 import Photo from "@/app/photo.jpg";
-import Work from "./work";
+import Projects from "./projects";
+import ThemeToggle from "@/components/theme-toggle";
+
 export default function Home() {
   return (
-    <div className="w-4/6 m-auto select-none">
-    <nav className="flex flex-row justify-between items-center py-4">
-        <h1 className="text-2xl">vineet bambah</h1>
-        <div className="flex space-x-2 text-gray-700 ">
-          <a href="#about" className="text-lg  hover:text-black">about <span className="font-semibold">[a]</span></a>
-          <a href="#projects" className="text-lg  hover:text-black">work <span className="font-semibold">[w]</span></a>
-          <a href="" className="text-lg  hover:text-black">resume <span className="font-semibold">[r]</span></a>
+    <>
+      <div className="m-8 flex flex-row text-sm items-center justify-between ">
+        <div className="flex flex-row space-x-4 items-center justify-center">
+          <Image src={Photo} alt="vineet" className="rounded-full font-thin w-20 h-20" />
+          <div className="flex flex-col items-start h-fit space-y-2">
+            <h1 className="text-lg">vineet bambah</h1>
+            <button className="p-2 border-1 rounded-full md:hidden">
+              resume
+            </button>
+          </div>
         </div>
-    </nav>
-    <main className="flex flex-col justify-center mt-24 m-auto max-w-3/4">
-      <h1 className="font-thin text-3xl">About</h1>
-      <div className="flex flex-row justify-between items-center space-x-4 mt-4">
-        <p className="text-lg text-gray-700">
-          I am a software engineer with a passion for open source and technology. I love to learn new things and share my knowledge with others. I am currently working on various projects and contributing to open source.
-        </p>
-      <Image src={Photo} alt="vineet" className="rounded-full w-48 h-48 hover:scale-101 duration-200" />
+        <div>
+          <ThemeToggle />
+        </div>
       </div>
-    </main>
-    <section className="work mt-24 m-auto max-w-3/4">
-      <Work/>
-    </section>
-    </div>
+      <nav className="w-full flex flex-row justify-center items-center underline space-x-16">
+        <div className="hidden md:flex flex-row space-x-16">
+          <a href="/projects">Projects</a>
+          <a href="/dump">Dump</a>
+          <a href="/notes">Notes</a>
+          <a href="/resume">Resume</a>
+        </div>
+        <div className="md:hidden flex flex-row space-x-16">
+          <a href="/projects">Projects</a>
+          <a href="/dump">Dump</a>
+          <a href="/notes">Notes</a>
+        </div>
+      </nav>
+      <div className="m-8">
+        <h1 className="font-thin text-lg mb-2">About</h1>
+        <p className="text-gray-600 dark:text-gray-300">I am a software engineer and a tinkerer. <br />I have a passion for open source and technology. I am currently studying at NITJ and actively looking for full-time roles. <br />You can see my projects and thoughts through this website. </p>
+      </div>
+      <div className="m-8">
+        <h1 className="font-thin text-lg mb-2">Projects</h1>
+        <Projects />
+      </div>
+      <div className="m-8">
+        <p>You can reach me out to me at <a className="underline md:no-underline" href="mailto:neozvbambah@gmail.com">neozvbambah@gmail.com</a></p>
+        <ul className="flex flex-row space-x-4 mt-2">
+          <li><a href="https://x.com/vineetbambah" className="underline cursor-pointer">X</a></li>
+          <li><a href="https://www.linkedin.com/in/vineetbambah/" className="underline cursor-pointer">LinkedIn</a></li>
+          <li><a href="https://www.instagram.com/vineetbambah/" className="underline cursor-pointer">GitHub</a></li>
+        </ul>
+      </div>
+    </>
   );
 }
