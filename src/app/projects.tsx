@@ -1,34 +1,62 @@
+'use client'
 import { Globe, Github } from "lucide-react";
+import { notion } from "../utils/client";
+import { useEffect, useState } from "react";
+import Router from "next/router";
+type Project = {
+    title: string;
+    description: string;
+    url: string;
+    github: string;
+    tags: string;
+}
 
-const Project = (name: string, description: string) => {
+const fetchProjects = async () => {
+    const response = await fetch('/api/notionProjects');
+    if(!response.ok) {
+        throw new Error('Failed to fetch projects');
+    }
+    const data = await response.json();
+    return data.map((page: any) => {
+        const title = page.properties.name.title[0].text.content;
+        const description = page.properties.description.rich_text[0].text.content;
+        const url = page.properties.url.url;
+        const github = page.properties.github.url;
+        const tags = page.properties.tags.multi_select.map((tag: { name: string }) => tag.name).join(', ');
+        return { title, description, url, github, tags }
+    });
+}
+console.log("Project data fetched from Notion:", fetchProjects);
+const router = Router;
+const Project = (name: string, description: string, url?: string, github?: string) => {
     return (
         <div className="py-4 text-gray-600 dark:text-gray-300">
-            <h2 className="text-gray-800 dark:text-gray-200">{name}</h2>
+            {url? <h2 className="text-gray-800 dark:text-gray-200 cursor-pointer hover:underline" onClick={() => router.push(url ?? '#')}>{name}</h2>:<h2 className="text-gray-800 dark:text-gray-200">{name}</h2>}
             <p>{description}</p>
             <div className="flex flex-row space-x-4 mt-2">
-                <a href="#" className="text-sm hover:underline flex "><Globe className="scale-80 mr-1 -mt-0.5"/>View Project</a>
-                <a href="#" className="text-sm hover:underline flex"> <Github className="scale-80 mr-1 -mt-0.5"/> View Repo</a>
+                <a href={github} className="text-sm hover:underline flex"> <Github className="scale-80 mr-1 -mt-0.5" /> View Repo</a>
             </div>
         </div>
     );
 }
 const Projects = () => {
+    const [projects, setProjects] = useState<Project[]>([]);
+
+    useEffect(() => {
+        const getProjects = async () => {
+            const data = await fetchProjects();
+            setProjects(data);
+        };
+
+        getProjects();
+    }, []);
     return (
         <div>
-            <ul>
-                <li>
-                    {Project("Project 1", "Description of project 1")}
-                </li>
-                <li>
-                    {Project("Project 2", "Description of project 2")}
-                </li>
-                <li>
-                    {Project("Project 3", "Description of project 3")}
-                </li>
-                <li>
-                    {Project("Project 4", "Description of project 4")}
-                </li>
-            </ul>
+            {projects.map((project, index) => (
+                <div key={index} className="p-4">
+                    {Project(project.title, project.description, project.url, project.github)}
+                </div>
+            ))}
         </div>
     );
 }

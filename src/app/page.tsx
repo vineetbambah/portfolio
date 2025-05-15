@@ -2,7 +2,7 @@ import Image from "next/image";
 import Photo from "@/app/photo.jpg";
 import Projects from "./projects";
 import ThemeToggle from "@/components/theme-toggle";
-
+import Dump from "./dump";
 export default function Home() {
   return (
     <>
@@ -40,13 +40,14 @@ export default function Home() {
       <div className="m-8">
         <h1 className="font-thin text-lg mb-2">Projects</h1>
         <Projects />
+        <Dump />
       </div>
       <div className="m-8">
         <p>You can reach me out to me at <a className="underline md:no-underline" href="mailto:neozvbambah@gmail.com">neozvbambah@gmail.com</a></p>
         <ul className="flex flex-row space-x-4 mt-2">
           <li><a href="https://x.com/vineetbambah" className="underline cursor-pointer">X</a></li>
           <li><a href="https://www.linkedin.com/in/vineetbambah/" className="underline cursor-pointer">LinkedIn</a></li>
-          <li><a href="https://www.instagram.com/vineetbambah/" className="underline cursor-pointer">GitHub</a></li>
+          <li><a href="https://www.github.com/vineetbambah/" className="underline cursor-pointer">GitHub</a></li>
         </ul>
       </div>
     </>
