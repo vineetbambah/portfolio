@@ -30,11 +30,11 @@ console.log("Project data fetched from Notion:", fetchProjects);
 const router = Router;
 const Project = (name: string, description: string, url?: string, github?: string) => {
     return (
-        <div className="py-4 text-gray-600 dark:text-gray-300">
+        <div className="py-4 bg-black/5 text-gray-600 dark:text-gray-300">
             {url? <h2 className="text-gray-800 dark:text-gray-200 cursor-pointer hover:underline" onClick={() => router.push(url ?? '#')}>{name}</h2>:<h2 className="text-gray-800 dark:text-gray-200">{name}</h2>}
-            <p>{description}</p>
-            <div className="flex flex-row space-x-4 mt-2">
-                <a href={github} className="text-sm hover:underline flex"> <Github className="scale-80 mr-1 -mt-0.5" /> View Repo</a>
+            <div className="flex flex-row space-x-4 justify-between mt-2">
+                <p>{description}</p>
+                <a href={github} className="text-sm hover:underline flex"> <Github className="scale-80 mr-1 -mt-0.5" /></a>
             </div>
         </div>
     );
@@ -53,7 +53,7 @@ const Projects = () => {
     return (
         <div>
             {projects.map((project, index) => (
-                <div key={index} className="p-4">
+                <div key={index}>
                     {Project(project.title, project.description, project.url, project.github)}
                 </div>
             ))}

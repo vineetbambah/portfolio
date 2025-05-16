@@ -15,7 +15,7 @@ export default function RootLayout({
     <html lang="en"
     suppressHydrationWarning>
       <body
-        className={`font-mono antialiased text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-900`}
+        className={`font-mono antialiased text-gray-800 dark:text-gray-200 bg-white dark:bg-black/80`}
       >
         <ThemeProvider
           attribute="class"

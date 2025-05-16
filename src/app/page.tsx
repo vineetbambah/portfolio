@@ -2,10 +2,9 @@ import Image from "next/image";
 import Photo from "@/app/photo.jpg";
 import Projects from "./projects";
 import ThemeToggle from "@/components/theme-toggle";
-import Dump from "./dump";
 export default function Home() {
   return (
-    <>
+    <div className="flex flex-col md:w-1/2 mx-auto">
       <div className="m-8 flex flex-row text-sm items-center justify-between ">
         <div className="flex flex-row space-x-4 items-center justify-center">
           <Image src={Photo} alt="vineet" className="rounded-full font-thin w-20 h-20" />
@@ -35,12 +34,11 @@ export default function Home() {
       </nav>
       <div className="m-8">
         <h1 className="font-thin text-lg mb-2">About</h1>
-        <p className="text-gray-600 dark:text-gray-300">I am a software engineer and a tinkerer. <br />I have a passion for open source and technology. I am currently studying at NITJ and actively looking for full-time roles. <br />You can see my projects and thoughts through this website. </p>
+        <p className="text-gray-600 dark:text-gray-300">I am a software engineer and a tinkerer. <br /> I have a passion for open source and technology. I am currently studying at NITJ and actively looking for full-time roles. <br />You can see my projects and thoughts through this website. </p>
       </div>
       <div className="m-8">
         <h1 className="font-thin text-lg mb-2">Projects</h1>
         <Projects />
-        <Dump />
       </div>
       <div className="m-8">
         <p>You can reach me out to me at <a className="underline md:no-underline" href="mailto:neozvbambah@gmail.com">neozvbambah@gmail.com</a></p>
@@ -50,6 +48,6 @@ export default function Home() {
           <li><a href="https://www.github.com/vineetbambah/" className="underline cursor-pointer">GitHub</a></li>
         </ul>
       </div>
-    </>
+    </div>
   );
 }
