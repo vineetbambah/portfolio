@@ -6,7 +6,7 @@ const ResumeButton = () => {
 
   return (
    <button className="p-2 border-1 rounded-full" onClick={handleClick}>
-              resume
+    resume
     </button>
   );
 }

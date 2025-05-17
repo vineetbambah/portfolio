@@ -9,6 +9,35 @@ type Project = {
     github: string;
     tags: string;
 }
+type NotionPage = {
+    properties: {
+        name: {
+            title: {
+                text: {
+                    content: string;
+                }
+            }[]
+        };
+        description: {
+            rich_text: {
+                text: {
+                    content: string;
+                }
+            }[]
+        };
+        url: {
+            url: string;
+        }
+        github: {
+            url: string;
+        }
+        tags: {
+            multi_select: {
+                name: string;
+            }[]
+        }
+    }
+}
 
 const fetchProjects = async () => {
     const response = await fetch('/api/notionProjects');
@@ -16,7 +45,7 @@ const fetchProjects = async () => {
         throw new Error('Failed to fetch projects');
     }
     const data = await response.json();
-    return data.map((page: any) => {
+    return data.map((page: NotionPage) => {
         const title = page.properties.name.title[0].text.content;
         const description = page.properties.description.rich_text[0].text.content;
         const url = page.properties.url.url;

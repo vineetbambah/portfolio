@@ -19,7 +19,11 @@ const ThemeToggle = () => {
     <button
       className="p-2 rounded-full"
       onClick={() => {
-        theme === "dark" ? setTheme("light") : setTheme("dark");
+        if (theme === "dark") {
+          setTheme("light");
+        } else {
+          setTheme("dark");
+        }
       }}
     >
       {theme === "dark" ? <Sun /> : <Moon />}
