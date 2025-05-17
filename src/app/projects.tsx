@@ -1,6 +1,5 @@
 'use client'
-import { Globe, Github } from "lucide-react";
-import { notion } from "../utils/client";
+import { Github } from "lucide-react";
 import { useEffect, useState } from "react";
 import Router from "next/router";
 type Project = {
@@ -30,7 +29,7 @@ console.log("Project data fetched from Notion:", fetchProjects);
 const router = Router;
 const Project = (name: string, description: string, url?: string, github?: string) => {
     return (
-        <div className="py-4 bg-black/5 text-gray-600 dark:text-gray-300">
+        <div className="py-4 text-gray-600 dark:text-gray-300">
             {url? <h2 className="text-gray-800 dark:text-gray-200 cursor-pointer hover:underline" onClick={() => router.push(url ?? '#')}>{name}</h2>:<h2 className="text-gray-800 dark:text-gray-200">{name}</h2>}
             <div className="flex flex-row space-x-4 justify-between mt-2">
                 <p>{description}</p>

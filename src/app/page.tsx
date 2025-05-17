@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Photo from "@/app/photo.jpg";
 import Projects from "./projects";
+import ResumeButton from "@/components/resume-button";
 import ThemeToggle from "@/components/theme-toggle";
 export default function Home() {
   return (
@@ -10,9 +11,9 @@ export default function Home() {
           <Image src={Photo} alt="vineet" className="rounded-full font-thin w-20 h-20" />
           <div className="flex flex-col items-start h-fit space-y-2">
             <h1 className="text-lg">vineet bambah</h1>
-            <button className="p-2 border-1 rounded-full md:hidden">
-              resume
-            </button>
+            <div className="md:hidden">
+            <ResumeButton />
+            </div>
           </div>
         </div>
         <div>
@@ -23,13 +24,13 @@ export default function Home() {
         <div className="hidden md:flex flex-row space-x-16">
           <a href="/projects">Projects</a>
           <a href="/dump">Dump</a>
-          <a href="/notes">Notes</a>
+          <a href="https://vineetbambah.notion.site/1f6861a19b9b804b83a3c5b7836e9052?v=1f6861a19b9b804aa018000c43de453d">Notes</a>
           <a href="/resume">Resume</a>
         </div>
         <div className="md:hidden flex flex-row space-x-16">
           <a href="/projects">Projects</a>
           <a href="/dump">Dump</a>
-          <a href="/notes">Notes</a>
+          <a href="https://vineetbambah.notion.site/1f6861a19b9b804b83a3c5b7836e9052?v=1f6861a19b9b804aa018000c43de453d">Notes</a>
         </div>
       </nav>
       <div className="m-8">
