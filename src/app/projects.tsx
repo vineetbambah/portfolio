@@ -64,12 +64,13 @@ async function fetchProjects(): Promise<Project[]> {
 }
 console.log("Project data fetched from Notion:", fetchProjects);
 const Project = (name: string, description: string, github: string, url?: string) => {
+    const githubUrl = github.startsWith("http") ? github : `https://${github.replace(/^\/+/, "")}`;
     return (
         <div className="py-4 text-gray-600 dark:text-gray-300">
             {url ? <Link href={url} className="text-gray-800 dark:text-gray-200 cursor-pointer hover:underline">{name}</Link> : <h2 className="text-gray-800 dark:text-gray-200">{name}</h2>}
             <div className="flex flex-row space-x-4 justify-between mt-2">
                 <p>{description}</p>
-                <Link href={github} className="text-sm hover:underline flex"> <Github className="scale-80 mr-1 -mt-0.5" /></Link>
+                <Link href={githubUrl} className="text-sm hover:underline flex"> <Github className="scale-80 mr-1 -mt-0.5" /></Link>
             </div>
         </div>
     );
