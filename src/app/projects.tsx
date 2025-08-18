@@ -2,6 +2,7 @@
 import { Github } from "lucide-react";
 import { useEffect, useState } from "react";
 import Router from "next/router";
+import Link from "next/link";
 type Project = {
     title: string;
     description: string;
@@ -41,7 +42,7 @@ type NotionPage = {
 
 const fetchProjects = async () => {
     const response = await fetch('/api/notionProjects');
-    if(!response.ok) {
+    if (!response.ok) {
         throw new Error('Failed to fetch projects');
     }
     const data = await response.json();
@@ -59,7 +60,8 @@ const router = Router;
 const Project = (name: string, description: string, url?: string, github?: string) => {
     return (
         <div className="py-4 text-gray-600 dark:text-gray-300">
-            {url? <h2 className="text-gray-800 dark:text-gray-200 cursor-pointer hover:underline" onClick={() => router.push(url ?? '#')}>{name}</h2>:<h2 className="text-gray-800 dark:text-gray-200">{name}</h2>}
+            {url ? <a href={url} className="text-gray-800 dark:text-gray-200 cursor-pointer hover:underline">{name}</a> : <h2 className="text-gray-800 dark:text-gray-200">{name}</h2>}
+            {/* {url ? <h2 className="text-gray-800 dark:text-gray-200 cursor-pointer hover:underline" onClick={() => router.push(url ?? '#')}>{name}</h2> : <h2 className="text-gray-800 dark:text-gray-200">{name}</h2>} */}
             <div className="flex flex-row space-x-4 justify-between mt-2">
                 <p>{description}</p>
                 <a href={github} className="text-sm hover:underline flex"> <Github className="scale-80 mr-1 -mt-0.5" /></a>
