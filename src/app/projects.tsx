@@ -39,7 +39,7 @@ type NotionPage = {
 
 async function fetchProjects(): Promise<Project[]> {
     const baseUrl =
-        process.env.NEXT_PUBLIC_SITE_URL;
+        process.env.SITE_URL;
     const response = await fetch(`${baseUrl}/api/notionProjects`, {
         cache: "no-store",
     });
