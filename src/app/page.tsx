@@ -23,12 +23,10 @@ export default function Home() {
       <nav className="w-full flex flex-row justify-center items-center underline space-x-16">
         <div className="hidden md:flex flex-row space-x-16">
           <a href="https://dev.to/vineetbambah">Blog</a>
-          <a href="https://vineetbambah.notion.site/1f6861a19b9b804b83a3c5b7836e9052?v=1f6861a19b9b804aa018000c43de453d">Notes</a>
-          <a href="/resume">Resume</a>
+          <a href="/resume.pdf">Resume</a>
         </div>
         <div className="md:hidden flex flex-row space-x-16">
           <a href="https://dev.to/vineetbambah">Blog</a>
-          <a href="https://vineetbambah.notion.site/1f6861a19b9b804b83a3c5b7836e9052?v=1f6861a19b9b804aa018000c43de453d">Notes</a>
         </div>
       </nav>
       <div className="m-8">
