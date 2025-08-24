@@ -62,8 +62,8 @@ async function fetchProjects(): Promise<Project[]> {
     });
 }
 console.log("Project data fetched from Notion:", fetchProjects);
-const Project = (name: string, description: string, github: string, url?: string) => {
-    const githubUrl = github.startsWith("http") ? github : `https://${github.replace(/^\/+/, "")}`;
+const Project = (name: string, description: string, github?: string, url?: string) => {
+    const githubUrl = github ? (github.startsWith("http") ? github : `https://${github.replace(/^\/+/, "")}`) : "";
     return (
         <div className="py-4 text-gray-600 dark:text-gray-300">
             {url ? <Link href={url} className="text-gray-800 dark:text-gray-200 cursor-pointer hover:underline">{name}</Link> : <h2 className="text-gray-800 dark:text-gray-200">{name}</h2>}
