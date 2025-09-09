@@ -31,7 +31,7 @@ export default function Home() {
       </nav>
       <div className="m-8">
         <h1 className="font-thin text-lg mb-2">About</h1>
-        <p className="text-gray-600 dark:text-gray-300">I am a software engineer and a tinkerer. <br /> I have a passion for open source and technology. I am currently studying at NITJ and actively looking for full-time roles. <br />You can see my projects and thoughts through this website. </p>
+        <p className="text-gray-600 dark:text-gray-300">I build real-world applications from scratch, designing everything from front-end interfaces to backend logic, APIs, and blockchain integrations.<br/> I contribute to open-source, solve complex problems, and thrive in fast-paced, remote startup environments where I can deliver immediate impact. <br/>My focus is on creating solutions that matter. You can see my projects and thoughts through this website.</p>
       </div>
       <div className="m-8">
         <h1 className="font-thin text-lg mb-2">Projects</h1>
